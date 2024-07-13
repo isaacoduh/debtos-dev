@@ -23,4 +23,17 @@ class DashboardController extends Controller
 
         return view('dashboard', compact('paidDebts', 'overdueDebts', 'inProcessDebts'));
     }
+
+    public function getData()
+    {
+        $paidDebts = Debt::where('status', 'paid')->count();
+        $overdueDebts = Debt::where('status', 'overdue')->count();
+        $inProcessDebts = Debt::where('status', 'in_process')->count();
+
+        return response()->json([
+            'paidDebts' => $paidDebts,
+            'overdueDebts' => $overdueDebts,
+            'inProcessDebts' => $inProcessDebts,
+        ]);
+    }
 }

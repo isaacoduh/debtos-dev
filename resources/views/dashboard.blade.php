@@ -15,6 +15,9 @@
         </div>
     </div>
     <div class="container max-w-7xl mx-auto p-4">
+        <p id="paidDebts"></p>
+        <p id="overdueDebts"></p>
+        <p id="inProcessDebts"></p>
         <div class="flex flex-wrap -mx-4">
             <div class="w-full md:w-1/3 px-4 mb-4 md:mb-0">
                 <div class="bg-white shadow rounded-lg p-4">
@@ -43,3 +46,22 @@
         </div>
     </div>
 </x-app-layout>
+
+<script>
+    $(document).ready(function() {
+        function loadDashboardData() {
+            $.ajax({
+                url: '{{ route('dashboard.data') }}',
+                method: 'GET',
+                success: function(data) {
+                    $('#paidDebts').text(data.paidDebts);
+                    $('#overdueDebts').text(data.overdueDebts);
+                    $('#inProcessDebts').text(data.inProcessDebts);
+                }
+            });
+        }
+
+        loadDashboardData();
+        setInterval(loadDashboardData, 60000); // Update every minute
+    });
+</script>
