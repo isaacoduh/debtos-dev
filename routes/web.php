@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,9 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware(['role:admin'])->group(function () {
         Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+        Route::get('/admin/payments/create', [PaymentController::class, 'create'])->name('payments.create');
+        Route::post('/admin/payments', [PaymentController::class, 'store'])->name('payments.store');
+
     });
 
     Route::middleware(['role:agent'])->group(function () {
