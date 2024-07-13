@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('debts', function (Blueprint $table) {
             $table->id();
             $table->string('amount')->nullable();
-            $table->enum('status', ['paid','pending','complete'])->default('pending');
+            $table->enum('status', ['paid','overdue','in_process'])->default('in_process');
             $table->dateTime('due_date');
             $table->foreignIdFor(Client::class)->nullable()->constrained()->cascadeOnDelete();
             $table->timestamps();

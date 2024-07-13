@@ -14,4 +14,32 @@
             </div>
         </div>
     </div>
+    <div class="container max-w-7xl mx-auto p-4">
+        <div class="flex flex-wrap -mx-4">
+            <div class="w-full md:w-1/3 px-4 mb-4 md:mb-0">
+                <div class="bg-white shadow rounded-lg p-4">
+                    <div class="card-body">
+                        <h5 class="text-lg font-bold mb-2">Paid Debts</h5>
+                        <p class="text-gray-700">{{ $paidDebts }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full md:w-1/3 px-4 mb-4 md:mb-0">
+                <div class="bg-white shadow rounded-lg p-4">
+                    <div class="card-body">
+                        <h5 class="text-lg font-bold mb-2">Overdue Debts</h5>
+                        <p class="text-gray-700">{{ $overdueDebts }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full md:w-1/3 px-4">
+                <div class="bg-white shadow rounded-lg p-4">
+                    <div class="card-body">
+                        <h5 class="text-lg font-bold mb-2">In Process Debts</h5>
+                        <p class="text-gray-700">{{ $inProcessDebts }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </x-app-layout>
